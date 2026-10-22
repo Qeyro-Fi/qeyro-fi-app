@@ -1,0 +1,31 @@
+# Deploying
+
+The app is a static site. Any static host works as long as unknown paths fall back to `index.html`.
+
+## Vercel
+
+```bash
+npm install -g vercel
+vercel deploy --prod
+```
+
+`vercel.json` already contains the rewrite rule.
+
+## GitHub Pages
+
+Pages does not support path rewrites. Either use hash routing or copy `index.html` to `404.html` after the build so deep links work:
+
+```bash
+npm run build
+cp dist/index.html dist/404.html
+```
+
+## Netlify / Cloudflare Pages
+
+Set the build command to `npm run build`, the output directory to `dist`, and add a catch-all redirect `/* /index.html 200`.
+
+## Checklist before pointing users at it
+
+- [ ] Contract addresses entered for the network you are using
+- [ ] A dedicated RPC URL (the default public endpoints are rate limited)
+- [ ] Logo at `public/logo.png`
