@@ -8,7 +8,7 @@ export function timeAgo(unixSeconds: number | bigint): string {
   if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
   return `${Math.floor(s / 86400)}d ago`;
 }
-
+]
 export const fmtDate = (unixSeconds: number | bigint) =>
   new Date(Number(unixSeconds) * 1000).toISOString().replace("T", " ").slice(0, 19) + " UTC";
 
